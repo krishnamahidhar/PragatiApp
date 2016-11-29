@@ -1,14 +1,11 @@
 package com.dharanaditya.pragatiapp;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 
-import com.dharanaditya.pragatiapp.ui.ExamsFragment;
-import com.dharanaditya.pragatiapp.ui.FeedFragment;
+import com.dharanaditya.pragatiapp.Adapter.FragmentPagerViewAdapter;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -27,36 +24,8 @@ public class MainActivity extends AppCompatActivity {
         FragmentManager fragmentManager = getSupportFragmentManager();
 
         ViewPager viewPager = (ViewPager) findViewById(R.id.frag_view_pager);
-        viewPager.setAdapter(new FragmentPagerAdapter(fragmentManager) {
-            @Override
-            public Fragment getItem(int position) {
-                switch (position){
-                    case 0:
-                        return new FeedFragment();
-                    case 1:
-                        return new ExamsFragment();
-                    default:
-                        return null;
-                }
-            }
+        viewPager.setAdapter(new FragmentPagerViewAdapter(fragmentManager,this));
 
-            @Override
-            public CharSequence getPageTitle(int position) {
-                switch (position){
-                    case 0:
-                        return "Feeds";
-                    case 1:
-                        return "Exams";
-                    default:
-                        return null;
-                }
-            }
-
-            @Override
-            public int getCount() {
-                return 2;
-            }
-        });
     }
 
     @Override
