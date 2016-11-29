@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "93400877859",
+    "firebase_url": "https://pragatiapp.firebaseio.com",
+    "project_id": "pragatiapp",
+    "storage_bucket": "pragatiapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:93400877859:android:e1f509429dc56ad9",
+        "android_client_info": {
+          "package_name": "com.dharanaditya.pragatiapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "93400877859-lm0mbgi3atb4646od3vc2f9hfg9fh0l4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.dharanaditya.pragatiapp",
+            "certificate_hash": "16D875FCE82CE95A3C0352BA57B070C76BDF95E1"
+          }
+        },
+        {
+          "client_id": "93400877859-b49id2turtkb6r6tvt0ceq01dlj437mu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCXL0D_Gkccfln3bLribgWDdBpo_Og6hNc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "93400877859-b49id2turtkb6r6tvt0ceq01dlj437mu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
