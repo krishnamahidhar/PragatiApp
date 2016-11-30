@@ -18,7 +18,10 @@ public class Exams {
     private String link;
     private boolean read;
 
-    public Exams(String branch, String year, String title, String message,String author) {
+    public Exams() {
+    }
+
+    public Exams(String branch, String year, String title, String message, String author) {
         this.branch = branch;
         this.year = year;
         this.title = title;

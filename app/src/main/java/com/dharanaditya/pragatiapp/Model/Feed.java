@@ -14,6 +14,9 @@ public class Feed {
     private String timeStamp;
     boolean read;
 
+    public Feed() {
+    }
+
     public Feed(String title, String messege, String author) {
         this.title = title;
         this.messege = messege;
