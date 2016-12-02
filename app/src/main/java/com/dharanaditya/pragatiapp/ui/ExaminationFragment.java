@@ -12,7 +12,7 @@ import com.dharanaditya.pragatiapp.R;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class ExamsFragment extends Fragment {
+public class ExaminationFragment extends Fragment {
     FirebaseDatabase firebaseDatabase =FirebaseDatabase.getInstance();
     DatabaseReference reference = firebaseDatabase.getReference("exams");
     @Override
@@ -24,7 +24,7 @@ public class ExamsFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        final View v = inflater.inflate(R.layout.fragment_exams,container,false);
+        final View v = inflater.inflate(R.layout.fragment_examination,container,false);
         return v;
     }
 

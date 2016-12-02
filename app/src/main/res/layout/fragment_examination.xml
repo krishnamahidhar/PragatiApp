@@ -2,10 +2,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.dharanaditya.pragatiapp.ui.FeedFragment">
+    tools:context="com.dharanaditya.pragatiapp.ui.ExaminationFragment">
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/feedsRCV"
+        android:id="@+id/examsRCV"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 

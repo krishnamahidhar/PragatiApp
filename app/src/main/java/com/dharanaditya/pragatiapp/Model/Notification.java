@@ -7,17 +7,17 @@ import java.util.Date;
  * Created by dharan1011 on 29/11/16.
  */
 
-public class Feed {
+public class Notification {
     private String title;
     private String messege;
     private String author;
     private String timeStamp;
     boolean read;
 
-    public Feed() {
+    public Notification() {
     }
 
-    public Feed(String title, String messege, String author) {
+    public Notification(String title, String messege, String author) {
         this.title = title;
         this.messege = messege;
         this.author = author;
@@ -25,7 +25,7 @@ public class Feed {
         timeStamp = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss").format(new Date());
     }
 
-    public Feed(String title, String messege) {
+    public Notification(String title, String messege) {
         this.title = title;
         this.messege = messege;
         read = false;
@@ -74,7 +74,7 @@ public class Feed {
 
     @Override
     public String toString() {
-        return "Feed{" +
+        return "Notification{" +
                 "title='" + title + '\'' +
                 ", messege='" + messege + '\'' +
                 ", author='" + author + '\'' +

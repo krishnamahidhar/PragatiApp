@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 import com.dharanaditya.pragatiapp.R;
 
 
-public class FeedFragment extends Fragment{
+public class NotificationFragment extends Fragment{
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -21,7 +21,7 @@ public class FeedFragment extends Fragment{
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_feed,container,false);
+        View v = inflater.inflate(R.layout.fragment_notification,container,false);
         return v;
     }
 

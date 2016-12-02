@@ -7,7 +7,7 @@ import java.util.Date;
  * Created by dharan1011 on 29/11/16.
  */
 
-public class Exams {
+public class Examination {
     private String branch;
     private String year;
     private String title;
@@ -18,10 +18,10 @@ public class Exams {
     private String link;
     private boolean read;
 
-    public Exams() {
+    public Examination() {
     }
 
-    public Exams(String branch, String year, String title, String message, String author) {
+    public Examination(String branch, String year, String title, String message, String author) {
         this.branch = branch;
         this.year = year;
         this.title = title;
@@ -105,7 +105,7 @@ public class Exams {
 
     @Override
     public String toString() {
-        return "Exams{" +
+        return "Examination{" +
                 "branch='" + branch + '\'' +
                 ", year='" + year + '\'' +
                 ", title='" + title + '\'' +
