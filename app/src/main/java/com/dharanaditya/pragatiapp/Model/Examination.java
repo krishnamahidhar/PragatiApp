@@ -10,6 +10,7 @@ import java.util.Date;
 public class Examination {
     private String branch;
     private String year;
+    private String sem;
     private String title;
     private String message;
     private String author;
@@ -21,14 +22,22 @@ public class Examination {
     public Examination() {
     }
 
-    public Examination(String branch, String year, String title, String message, String author) {
+    public Examination(String branch, String year, String title, String message, String author,String sem) {
         this.branch = branch;
         this.year = year;
         this.title = title;
         this.message = message;
         this.author = author;
-        timeStamp = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss").format(new Date());
+        this.sem = sem;
+        timeStamp = new SimpleDateFormat("MM/dd/yyyy HH:mm").format(new Date());
 
+    }
+
+    public Examination(String branch, String sem, String title) {
+        this.branch = branch;
+        this.sem = sem;
+        this.title = title;
+        timeStamp = new SimpleDateFormat("MM/dd/yyyy HH:mm").format(new Date());
     }
 
     public String getBranch() {
@@ -45,6 +54,14 @@ public class Examination {
 
     public void setYear(String year) {
         this.year = year;
+    }
+
+    public String getSem() {
+        return sem;
+    }
+
+    public void setSem(String sem) {
+        this.sem = sem;
     }
 
     public String getTitle() {

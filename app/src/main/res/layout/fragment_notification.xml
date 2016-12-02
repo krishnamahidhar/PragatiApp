@@ -5,7 +5,7 @@
     tools:context="com.dharanaditya.pragatiapp.ui.NotificationFragment">
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/feedsRCV"
+        android:id="@+id/notificationRCV"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
