@@ -19,6 +19,7 @@ import com.google.firebase.database.DatabaseReference;
 
 
 public class NotificationFragment extends Fragment{
+
     RecyclerView recyclerView;
     DatabaseReference databaseReference = MainActivity.firebaseDatabase.getReference("notifications");
     @Override
@@ -46,6 +47,7 @@ public class NotificationFragment extends Fragment{
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(recyclerAdapter);
+
         return v;
     }
 
@@ -77,6 +79,7 @@ public class NotificationFragment extends Fragment{
             this.branch.setText(branch);
             this.title.setText(title);
         }
+
     }
 
 }
