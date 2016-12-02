@@ -22,9 +22,9 @@ public class ExaminationFragment extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        for (int i = 0;i<5;i++) {
-            reference.push().setValue(new Examination("ECE", "2-2", "Hello World"));
-        }
+//        for (int i = 0;i<5;i++) {
+//            reference.push().setValue(new Examination("ECE", "2-2", "Hello World"));
+//        }
     }
 
     @Nullable

@@ -24,10 +24,10 @@ public class NotificationFragment extends Fragment{
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        for (int i=0;i<5;i++){
-            databaseReference.push().setValue(new Notification("ECE","Hello World"));
-
-        }
+//        for (int i=0;i<5;i++){
+//            databaseReference.push().setValue(new Notification("ECE","Hello World"));
+//
+//        }
     }
 
     @Nullable
