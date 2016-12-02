@@ -7,26 +7,31 @@ import java.util.Date;
  * Created by dharan1011 on 29/11/16.
  */
 
-public class Feed {
+public class Notification {
     private String title;
     private String messege;
     private String author;
     private String timeStamp;
+    private String branch;
+    private String sem;
     boolean read;
 
-    public Feed(String title, String messege, String author) {
+    public Notification() {
+    }
+
+    public Notification(String title, String messege, String author) {
         this.title = title;
         this.messege = messege;
         this.author = author;
         read = false;
-        timeStamp = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss").format(new Date());
+        timeStamp = new SimpleDateFormat("MM/dd/yyyy HH:mm").format(new Date());
     }
 
-    public Feed(String title, String messege) {
+    public Notification(String branch, String title) {
+        this.branch = branch;
         this.title = title;
-        this.messege = messege;
-        read = false;
-        timeStamp = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss").format(new Date());
+        timeStamp = new SimpleDateFormat("MM/dd/yyyy HH:mm").format(new Date());
+
     }
 
     public String getTitle() {
@@ -53,6 +58,22 @@ public class Feed {
         this.author = author;
     }
 
+    public String getBranch() {
+        return branch;
+    }
+
+    public void setBranch(String branch) {
+        this.branch = branch;
+    }
+
+    public String getSem() {
+        return sem;
+    }
+
+    public void setSem(String sem) {
+        this.sem = sem;
+    }
+
     public String getTimeStamp() {
         return timeStamp;
     }
@@ -71,7 +92,7 @@ public class Feed {
 
     @Override
     public String toString() {
-        return "Feed{" +
+        return "Notification{" +
                 "title='" + title + '\'' +
                 ", messege='" + messege + '\'' +
                 ", author='" + author + '\'' +

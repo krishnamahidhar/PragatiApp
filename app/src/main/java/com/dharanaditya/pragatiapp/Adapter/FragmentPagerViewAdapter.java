@@ -4,8 +4,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.dharanaditya.pragatiapp.ui.ExamsFragment;
-import com.dharanaditya.pragatiapp.ui.FeedFragment;
+import com.dharanaditya.pragatiapp.ui.ExaminationFragment;
+import com.dharanaditya.pragatiapp.ui.NotificationFragment;
 
 /**
  * Created by dharan1011 on 29/11/16.
@@ -20,9 +20,9 @@ public class FragmentPagerViewAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         switch (position){
             case 0:
-                return new FeedFragment();
+                return new NotificationFragment();
             case 1:
-                return new ExamsFragment();
+                return new ExaminationFragment();
             default:
                 return null;
         }
@@ -32,10 +32,10 @@ public class FragmentPagerViewAdapter extends FragmentPagerAdapter {
     public CharSequence getPageTitle(int position) {
         switch (position){
             case 0:
-                return "Feeds";
+                return "Notifications";
             case 1:
 //                Log.d(MainActivity.TAG,context.getResources().getString(R.string.strip_palace_holder_1));
-                return "Exams";
+                return "Examinations";
             default:
                 return null;
         }

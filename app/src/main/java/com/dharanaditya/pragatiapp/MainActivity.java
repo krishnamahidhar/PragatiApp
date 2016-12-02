@@ -1,18 +1,17 @@
 package com.dharanaditya.pragatiapp;
 
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 
 import com.dharanaditya.pragatiapp.Adapter.FragmentPagerViewAdapter;
-import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class MainActivity extends AppCompatActivity {
-    FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-    DatabaseReference feedReference = firebaseDatabase.getReference("feeds");
-    DatabaseReference examsReference = firebaseDatabase.getReference("Exams");
+    public static FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+
 
     public static final String TAG = "DEBUG_TAG";
     @Override
@@ -21,11 +20,17 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         getSupportActionBar().setTitle(R.string.college_name);
 
-        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentUI();
+//        rcvTest();
 
+    }
+
+    private void fragmentUI() {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.frag_tab_lay);
         ViewPager viewPager = (ViewPager) findViewById(R.id.frag_view_pager);
         viewPager.setAdapter(new FragmentPagerViewAdapter(fragmentManager));
-
+        tabLayout.setupWithViewPager(viewPager);
     }
 
     @Override
@@ -37,4 +42,5 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
     }
+
 }

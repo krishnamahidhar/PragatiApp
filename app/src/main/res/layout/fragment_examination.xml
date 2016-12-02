@@ -2,13 +2,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.dharanaditya.pragatiapp.ui.FeedFragment">
+    tools:context="com.dharanaditya.pragatiapp.ui.ExaminationFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/examinationRCV"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Hello Feeds Fragment"
-        />
+        android:layout_height="match_parent"/>
 
 </RelativeLayout>
