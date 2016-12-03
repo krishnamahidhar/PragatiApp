@@ -10,21 +10,28 @@ import com.dharanaditya.pragatiapp.Adapter.FragmentPagerViewAdapter;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class MainActivity extends AppCompatActivity {
-    public static FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-
+    public static FirebaseDatabase firebaseDatabase;
 
     public static final String TAG = "DEBUG_TAG";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         getSupportActionBar().setTitle(R.string.college_name);
 
+        if (savedInstanceState == null) {
+            FirebaseDatabase.getInstance().setPersistenceEnabled(true);
+        }
+
+        firebaseDatabase = FirebaseDatabase.getInstance();
+
+
         fragmentUI();
-//        rcvTest();
 
     }
 
+    //    Todo uncomment for PageViwer
     private void fragmentUI() {
         FragmentManager fragmentManager = getSupportFragmentManager();
         TabLayout tabLayout = (TabLayout) findViewById(R.id.frag_tab_lay);
