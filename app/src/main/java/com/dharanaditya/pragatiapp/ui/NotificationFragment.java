@@ -17,23 +17,41 @@ import com.dharanaditya.pragatiapp.Model.Notification;
 import com.dharanaditya.pragatiapp.R;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 
 public class NotificationFragment extends Fragment{
 
+
+    //Firebase
+    private FirebaseDatabase  firebaseDatabase = FirebaseDatabase.getInstance();
+    private DatabaseReference reference = firebaseDatabase.getReference("notifications");
+    //UI
     RecyclerView recyclerView;
-    final DatabaseReference databaseReference = MainActivity.firebaseDatabase.getReference("notifications");
     FirebaseRecyclerAdapter<Notification,NotificationViewHolder> recyclerAdapter;
 
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-//        for (int i=0;i<5;i++){
-//            databaseReference.push().setValue(new Notification("ECE","Hello World"));
-//
-//        }
+//        addData();
     }
+
+    private void addData() {
+        for (int i=0;i<5;i++){
+            reference.push().setValue(new Notification("ECE","Hello World"));
+
+        }
+    }
+
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        reference.keepSynced(true);
+
+    }
+
 
     @Nullable
     @Override
@@ -42,7 +60,7 @@ public class NotificationFragment extends Fragment{
         recyclerView = (RecyclerView) v.findViewById(R.id.notificationRCV);
 
         recyclerAdapter =
-                new FirebaseRecyclerAdapter<Notification, NotificationViewHolder>(Notification.class,R.layout.notif_item,NotificationViewHolder.class,databaseReference) {
+                new FirebaseRecyclerAdapter<Notification, NotificationViewHolder>(Notification.class,R.layout.notif_item,NotificationViewHolder.class, reference) {
                     @Override
                     protected void populateViewHolder(NotificationViewHolder viewHolder, Notification model, final int position) {
                         viewHolder.bindData(model.getTimeStamp(),model.getBranch(),model.getTitle(),model);
@@ -54,10 +72,6 @@ public class NotificationFragment extends Fragment{
         return v;
     }
 
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
 
     @Override
     public void onStart() {

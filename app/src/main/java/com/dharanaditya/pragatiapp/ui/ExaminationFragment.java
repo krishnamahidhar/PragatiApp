@@ -17,15 +17,29 @@ import com.dharanaditya.pragatiapp.Model.Examination;
 import com.dharanaditya.pragatiapp.R;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class ExaminationFragment extends Fragment {
-    DatabaseReference reference = MainActivity.firebaseDatabase.getReference("examination");
+
+    private FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+    private DatabaseReference reference = firebaseDatabase.getReference("examination");
+
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-//        for (int i = 0;i<5;i++) {
-//            reference.push().setValue(new Examination("ECE", "2-2", "Hello World"));
-//        }
+//        addData();
+    }
+
+    private void addData() {
+        for (int i = 0;i<5;i++) {
+            reference.push().setValue(new Examination("ECE", "2-2", "Hello World"));
+        }
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        reference.keepSynced(true);
     }
 
     @Nullable
@@ -73,7 +87,7 @@ public class ExaminationFragment extends Fragment {
 
         @Override
         public void onClick(View view) {
-            Log.d(MainActivity.TAG,getItemId()+"");
+            Log.d(MainActivity.TAG,model.toString());
         }
     }
 

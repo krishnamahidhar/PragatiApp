@@ -10,8 +10,7 @@ import com.dharanaditya.pragatiapp.Adapter.FragmentPagerViewAdapter;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class MainActivity extends AppCompatActivity {
-    public static FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-
+    public static FirebaseDatabase firebaseDatabase;
 
     public static final String TAG = "DEBUG_TAG";
     @Override
@@ -19,6 +18,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         getSupportActionBar().setTitle(R.string.college_name);
+
+        FirebaseDatabase.getInstance().setPersistenceEnabled(true);
+
+        firebaseDatabase = FirebaseDatabase.getInstance();
 
 
         fragmentUI();
