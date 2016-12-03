@@ -31,7 +31,7 @@ public class ExaminationFragment extends Fragment {
     }
 
     private void addData() {
-        for (int i = 0;i<5;i++) {
+        for (int i = 0; i < 5; i++) {
             reference.push().setValue(new Examination("ECE", "2-2", "Hello World"));
         }
     }
@@ -45,13 +45,13 @@ public class ExaminationFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        final View v = inflater.inflate(R.layout.fragment_examination,container,false);
+        final View v = inflater.inflate(R.layout.fragment_examination, container, false);
         RecyclerView recyclerView = (RecyclerView) v.findViewById(R.id.examinationRCV);
-        FirebaseRecyclerAdapter<Examination,ExaminationViewHolder> recyclerAdapter =
-                new FirebaseRecyclerAdapter<Examination, ExaminationViewHolder>(Examination.class,R.layout.exam_item,ExaminationViewHolder.class,reference) {
+        FirebaseRecyclerAdapter<Examination, ExaminationViewHolder> recyclerAdapter =
+                new FirebaseRecyclerAdapter<Examination, ExaminationViewHolder>(Examination.class, R.layout.exam_item, ExaminationViewHolder.class, reference) {
                     @Override
                     protected void populateViewHolder(ExaminationViewHolder viewHolder, Examination model, int position) {
-                        viewHolder.bindDate(model.getBranch(),model.getSem(),model.getTimeStamp(),model.getTitle(),model);
+                        viewHolder.bindDate(model.getBranch(), model.getSem(), model.getTimeStamp(), model.getTitle(), model);
                     }
                 };
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -64,9 +64,10 @@ public class ExaminationFragment extends Fragment {
         super.onStart();
     }
 
-    public static class ExaminationViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
-        TextView branch,sem,date,title;
+    public static class ExaminationViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+        TextView branch, sem, date, title;
         Examination model;
+
         public ExaminationViewHolder(View itemView) {
             super(itemView);
             branch = (TextView) itemView.findViewById(R.id.exam_branch);
@@ -77,7 +78,7 @@ public class ExaminationFragment extends Fragment {
             itemView.setOnClickListener(this);
         }
 
-        public void bindDate(String branch,String sem,String date,String title,Examination model){
+        public void bindDate(String branch, String sem, String date, String title, Examination model) {
             this.branch.setText(branch);
             this.sem.setText(sem);
             this.date.setText(date);
@@ -87,7 +88,7 @@ public class ExaminationFragment extends Fragment {
 
         @Override
         public void onClick(View view) {
-            Log.d(MainActivity.TAG,model.toString());
+            Log.d(MainActivity.TAG, model.toString());
         }
     }
 

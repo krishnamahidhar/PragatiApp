@@ -20,15 +20,15 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 
-public class NotificationFragment extends Fragment{
+public class NotificationFragment extends Fragment {
 
 
     //Firebase
-    private FirebaseDatabase  firebaseDatabase = FirebaseDatabase.getInstance();
+    private FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
     private DatabaseReference reference = firebaseDatabase.getReference("notifications");
     //UI
     RecyclerView recyclerView;
-    FirebaseRecyclerAdapter<Notification,NotificationViewHolder> recyclerAdapter;
+    FirebaseRecyclerAdapter<Notification, NotificationViewHolder> recyclerAdapter;
 
 
     @Override
@@ -38,8 +38,8 @@ public class NotificationFragment extends Fragment{
     }
 
     private void addData() {
-        for (int i=0;i<5;i++){
-            reference.push().setValue(new Notification("ECE","Hello World"));
+        for (int i = 0; i < 5; i++) {
+            reference.push().setValue(new Notification("ECE", "Hello World"));
 
         }
     }
@@ -56,14 +56,14 @@ public class NotificationFragment extends Fragment{
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        final View v = inflater.inflate(R.layout.fragment_notification,container,false);
+        final View v = inflater.inflate(R.layout.fragment_notification, container, false);
         recyclerView = (RecyclerView) v.findViewById(R.id.notificationRCV);
 
         recyclerAdapter =
-                new FirebaseRecyclerAdapter<Notification, NotificationViewHolder>(Notification.class,R.layout.notif_item,NotificationViewHolder.class, reference) {
+                new FirebaseRecyclerAdapter<Notification, NotificationViewHolder>(Notification.class, R.layout.notif_item, NotificationViewHolder.class, reference) {
                     @Override
                     protected void populateViewHolder(NotificationViewHolder viewHolder, Notification model, final int position) {
-                        viewHolder.bindData(model.getTimeStamp(),model.getBranch(),model.getTitle(),model);
+                        viewHolder.bindData(model.getTimeStamp(), model.getBranch(), model.getTitle(), model);
                     }
                 };
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -83,9 +83,10 @@ public class NotificationFragment extends Fragment{
         super.onResume();
     }
 
-    public static class NotificationViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
-        TextView date,branch,title;
+    public static class NotificationViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+        TextView date, branch, title;
         Notification model;
+
         public NotificationViewHolder(View itemView) {
             super(itemView);
             date = (TextView) itemView.findViewById(R.id.notif_date);
@@ -93,7 +94,8 @@ public class NotificationFragment extends Fragment{
             title = (TextView) itemView.findViewById(R.id.notif_title);
             itemView.setOnClickListener(this);
         }
-        public void bindData(String date, String branch, String title, Notification model){
+
+        public void bindData(String date, String branch, String title, Notification model) {
             this.date.setText(date);
             this.branch.setText(branch);
             this.title.setText(title);
@@ -102,7 +104,7 @@ public class NotificationFragment extends Fragment{
 
         @Override
         public void onClick(View view) {
-            Log.d(MainActivity.TAG,model.toString());
+            Log.d(MainActivity.TAG, model.toString());
         }
     }
 

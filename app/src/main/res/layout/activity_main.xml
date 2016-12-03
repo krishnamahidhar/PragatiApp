@@ -4,6 +4,7 @@
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/rcvBG"
     tools:context="com.dharanaditya.pragatiapp.MainActivity">
 
     <!--Todo Remove comment after testing-->
@@ -11,6 +12,8 @@
         android:id="@+id/frag_tab_lay"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:elevation="6dp"
+        android:background="@color/white"
         />
 
     <android.support.v4.view.ViewPager

@@ -13,23 +13,25 @@ public class MainActivity extends AppCompatActivity {
     public static FirebaseDatabase firebaseDatabase;
 
     public static final String TAG = "DEBUG_TAG";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         getSupportActionBar().setTitle(R.string.college_name);
 
-        FirebaseDatabase.getInstance().setPersistenceEnabled(true);
+        if (savedInstanceState == null) {
+            FirebaseDatabase.getInstance().setPersistenceEnabled(true);
+        }
 
         firebaseDatabase = FirebaseDatabase.getInstance();
 
 
         fragmentUI();
-//        rcvTest();
 
     }
 
-//    Todo uncomment for PageViwer
+    //    Todo uncomment for PageViwer
     private void fragmentUI() {
         FragmentManager fragmentManager = getSupportFragmentManager();
         TabLayout tabLayout = (TabLayout) findViewById(R.id.frag_tab_lay);
