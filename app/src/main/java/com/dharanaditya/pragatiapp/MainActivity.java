@@ -20,11 +20,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         getSupportActionBar().setTitle(R.string.college_name);
 
+
         fragmentUI();
 //        rcvTest();
 
     }
 
+//    Todo uncomment for PageViwer
     private void fragmentUI() {
         FragmentManager fragmentManager = getSupportFragmentManager();
         TabLayout tabLayout = (TabLayout) findViewById(R.id.frag_tab_lay);

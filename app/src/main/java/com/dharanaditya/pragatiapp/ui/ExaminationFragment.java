@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,7 +37,7 @@ public class ExaminationFragment extends Fragment {
                 new FirebaseRecyclerAdapter<Examination, ExaminationViewHolder>(Examination.class,R.layout.exam_item,ExaminationViewHolder.class,reference) {
                     @Override
                     protected void populateViewHolder(ExaminationViewHolder viewHolder, Examination model, int position) {
-                        viewHolder.bindDate(model.getBranch(),model.getSem(),model.getTimeStamp(),model.getTitle());
+                        viewHolder.bindDate(model.getBranch(),model.getSem(),model.getTimeStamp(),model.getTitle(),model);
                     }
                 };
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -49,21 +50,30 @@ public class ExaminationFragment extends Fragment {
         super.onStart();
     }
 
-    public static class ExaminationViewHolder extends RecyclerView.ViewHolder{
+    public static class ExaminationViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         TextView branch,sem,date,title;
+        Examination model;
         public ExaminationViewHolder(View itemView) {
             super(itemView);
             branch = (TextView) itemView.findViewById(R.id.exam_branch);
             sem = (TextView) itemView.findViewById(R.id.exam_sem);
             date = (TextView) itemView.findViewById(R.id.exam_date);
             title = (TextView) itemView.findViewById(R.id.exam_title);
+
+            itemView.setOnClickListener(this);
         }
 
-        public void bindDate(String branch,String sem,String date,String title){
+        public void bindDate(String branch,String sem,String date,String title,Examination model){
             this.branch.setText(branch);
             this.sem.setText(sem);
             this.date.setText(date);
             this.title.setText(title);
+            this.model = model;
+        }
+
+        @Override
+        public void onClick(View view) {
+            Log.d(MainActivity.TAG,getItemId()+"");
         }
     }
 
