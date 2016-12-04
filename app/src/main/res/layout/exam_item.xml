@@ -40,7 +40,7 @@
                 android:layout_height="wrap_content" />
         </LinearLayout>
         <TextView
-            android:id="@+id/exam_title"
+            android:id="@+id/exam_head"
             android:hint="Title"
             android:layout_weight="3"
             android:layout_width="wrap_content"

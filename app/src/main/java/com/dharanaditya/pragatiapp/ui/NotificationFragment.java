@@ -6,7 +6,6 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +20,10 @@ import com.google.firebase.database.FirebaseDatabase;
 
 
 public class NotificationFragment extends Fragment {
+
+    public interface notificationItemOnClick{
+        void onNotificationItemClick(Notification model, int position);
+    }
 
 
     //Firebase
@@ -39,7 +42,8 @@ public class NotificationFragment extends Fragment {
 
     private void addData() {
         for (int i = 0; i < 5; i++) {
-            reference.push().setValue(new Notification("ECE", "Hello World"));
+            reference.push().setValue(new Notification("ECE","1-1","Winter Vaccations","Winter Vaccations 5-12-16 to 15-12-16","HOD ECE",null));
+            reference.push().setValue(new Notification("CSE","4-1","Projects Last Data","Last date to submit project is 20-12-16","HOD CSE",null));
 
         }
     }
@@ -63,7 +67,8 @@ public class NotificationFragment extends Fragment {
                 new FirebaseRecyclerAdapter<Notification, NotificationViewHolder>(Notification.class, R.layout.notif_item, NotificationViewHolder.class, reference) {
                     @Override
                     protected void populateViewHolder(NotificationViewHolder viewHolder, Notification model, final int position) {
-                        viewHolder.bindData(model.getTimeStamp(), model.getBranch(), model.getTitle(), model);
+                        viewHolder.setItemOnClick(new MainActivity());
+                        viewHolder.bindData(model.getBranch(),model.getSem(),model.getTimestamp(),model.getHead(),model,position);
                     }
                 };
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -84,27 +89,36 @@ public class NotificationFragment extends Fragment {
     }
 
     public static class NotificationViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        TextView date, branch, title;
+        TextView branch,sem,date,title;
         Notification model;
+        int pos;
+        notificationItemOnClick itemOnClick;
 
         public NotificationViewHolder(View itemView) {
             super(itemView);
-            date = (TextView) itemView.findViewById(R.id.notif_date);
-            branch = (TextView) itemView.findViewById(R.id.notif_branch);
-            title = (TextView) itemView.findViewById(R.id.notif_title);
+            branch = (TextView) itemView.findViewById(R.id.exam_branch);
+            sem = (TextView) itemView.findViewById(R.id.exam_sem);
+            date = (TextView) itemView.findViewById(R.id.exam_date);
+            title = (TextView) itemView.findViewById(R.id.exam_head);
             itemView.setOnClickListener(this);
         }
 
-        public void bindData(String date, String branch, String title, Notification model) {
+        public void bindData(String branch,String sem,String date,String head,Notification model,int pos) {
             this.date.setText(date);
             this.branch.setText(branch);
-            this.title.setText(title);
+            this.sem.setText(sem);
+            this.title.setText(head);
             this.model = model;
+            this.pos = pos;
+        }
+
+        public void setItemOnClick(notificationItemOnClick itemOnClick) {
+            this.itemOnClick = itemOnClick;
         }
 
         @Override
         public void onClick(View view) {
-            Log.d(MainActivity.TAG, model.toString());
+            itemOnClick.onNotificationItemClick(model,pos);
         }
     }
 
