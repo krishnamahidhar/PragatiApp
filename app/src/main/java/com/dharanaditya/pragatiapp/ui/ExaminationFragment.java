@@ -1,6 +1,7 @@
 package com.dharanaditya.pragatiapp.ui;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -11,7 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.dharanaditya.pragatiapp.MainActivity;
+import com.dharanaditya.pragatiapp.DetailsActivity;
 import com.dharanaditya.pragatiapp.Model.Examination;
 import com.dharanaditya.pragatiapp.R;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
@@ -19,10 +20,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class ExaminationFragment extends Fragment {
-
-    public interface examinationItemOnClick{
-        void onExamItemClick(Examination model, int position);
-    }
 
     private FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
     private DatabaseReference reference = firebaseDatabase.getReference("examination");
@@ -55,7 +52,6 @@ public class ExaminationFragment extends Fragment {
                 new FirebaseRecyclerAdapter<Examination, ExaminationViewHolder>(Examination.class, R.layout.exam_item, ExaminationViewHolder.class, reference) {
                     @Override
                     protected void populateViewHolder(ExaminationViewHolder viewHolder, Examination model, int position) {
-                        viewHolder.setItemOnClick(new MainActivity());
                         viewHolder.bindDate(model.getBranch(),model.getSem(),model.getTimestamp(),model.getHead(),model,position);
                     }
                 };
@@ -73,7 +69,7 @@ public class ExaminationFragment extends Fragment {
         TextView branch, sem, date, head;
         Examination model;
         int pos;
-        examinationItemOnClick itemOnClick;
+
         public ExaminationViewHolder(View itemView) {
             super(itemView);
             branch = (TextView) itemView.findViewById(R.id.exam_branch);
@@ -92,13 +88,12 @@ public class ExaminationFragment extends Fragment {
             this.pos = pos;
         }
 
-        public void setItemOnClick(examinationItemOnClick itemOnClick) {
-            this.itemOnClick = itemOnClick;
-        }
-
         @Override
         public void onClick(View view) {
-            itemOnClick.onExamItemClick(model,pos);
+//            Log.d(MainActivity.TAG,pos+"");
+            Intent i = new Intent(itemView.getContext(), DetailsActivity.class);
+            i.putExtra("pos",pos);
+            itemView.getContext().startActivity(i);
         }
     }
 

@@ -7,13 +7,9 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 
 import com.dharanaditya.pragatiapp.Adapter.FragmentPagerViewAdapter;
-import com.dharanaditya.pragatiapp.Model.Examination;
-import com.dharanaditya.pragatiapp.Model.Notification;
-import com.dharanaditya.pragatiapp.ui.ExaminationFragment;
-import com.dharanaditya.pragatiapp.ui.NotificationFragment;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class MainActivity extends AppCompatActivity implements ExaminationFragment.examinationItemOnClick,NotificationFragment.notificationItemOnClick{
+public class MainActivity extends AppCompatActivity{
     public static FirebaseDatabase firebaseDatabase;
 
     public static final String TAG = "DEBUG_TAG";
@@ -54,13 +50,4 @@ public class MainActivity extends AppCompatActivity implements ExaminationFragme
         super.onResume();
     }
 
-    @Override
-    public void onExamItemClick(Examination model, int position) {
-//        Toast.makeText(this.getApplicationContext(), "Hello World "+position, Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    public void onNotificationItemClick(Notification model, int position) {
-//        Toast.makeText(this, "Hello World "+position, Toast.LENGTH_SHORT).show();
-    }
 }
