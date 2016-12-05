@@ -33,6 +33,7 @@ public class NotificationFragment extends Fragment {
     //UI
     RecyclerView recyclerView;
     FirebaseRecyclerAdapter<Notification, NotificationViewHolder> recyclerAdapter;
+    LinearLayoutManager layoutManager;
     AdView adView;
 
     @Override
@@ -73,6 +74,10 @@ public class NotificationFragment extends Fragment {
 
         recyclerView = (RecyclerView) v.findViewById(R.id.notificationRCV);
 
+        layoutManager = new LinearLayoutManager(getContext());
+        layoutManager.setStackFromEnd(true);
+        layoutManager.setReverseLayout(true);
+
         recyclerAdapter =
                 new FirebaseRecyclerAdapter<Notification, NotificationViewHolder>(Notification.class, R.layout.notif_item, NotificationViewHolder.class, reference) {
                     @Override
@@ -81,7 +86,7 @@ public class NotificationFragment extends Fragment {
                     }
                 };
 
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(recyclerAdapter);
 
         return v;

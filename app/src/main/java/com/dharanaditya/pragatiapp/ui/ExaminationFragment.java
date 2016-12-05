@@ -25,11 +25,13 @@ import org.parceler.Parcels;
 
 public class ExaminationFragment extends Fragment {
 
+    //Firebase
     private FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
     private DatabaseReference reference = firebaseDatabase.getReference("examination");
-
+    //UI
     RecyclerView recyclerView;
     FirebaseRecyclerAdapter<Examination, ExaminationViewHolder> recyclerAdapter;
+    LinearLayoutManager layoutManager;
     AdView adView;
 
     @Override
@@ -65,6 +67,10 @@ public class ExaminationFragment extends Fragment {
 
         recyclerView = (RecyclerView) v.findViewById(R.id.examinationRCV);
 
+        layoutManager = new LinearLayoutManager(getContext());
+        layoutManager.setStackFromEnd(true);
+        layoutManager.setReverseLayout(true);
+
         recyclerAdapter =
                 new FirebaseRecyclerAdapter<Examination, ExaminationViewHolder>(Examination.class, R.layout.exam_item, ExaminationViewHolder.class, reference) {
                     @Override
@@ -72,7 +78,9 @@ public class ExaminationFragment extends Fragment {
                         viewHolder.bindDate(model.getBranch(), model.getSem(), model.getTimestamp(), model.getHead(), model, position);
                     }
                 };
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        recyclerView.setLayoutManager(layoutManager);
+
         recyclerView.setAdapter(recyclerAdapter);
 
         return v;
