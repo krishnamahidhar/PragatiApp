@@ -7,12 +7,15 @@ import android.widget.TextView;
 
 import com.dharanaditya.pragatiapp.Model.Examination;
 import com.dharanaditya.pragatiapp.Model.Notification;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 
 import org.parceler.Parcels;
 
 public class DetailsActivity extends AppCompatActivity {
 
     TextView branch,sem,date,head,body,author,link;
+    AdView adView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +41,8 @@ public class DetailsActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
+        AdRequest adRequest = new AdRequest.Builder().build();
+        adView.loadAd(adRequest);
     }
 
     @Override
@@ -71,5 +76,7 @@ public class DetailsActivity extends AppCompatActivity {
         body = (TextView) findViewById(R.id.details_body);
         author = (TextView) findViewById(R.id.details_author);
         link = (TextView) findViewById(R.id.details_links);
+
+        adView = (AdView) findViewById(R.id.deatils_adView);
     }
 }

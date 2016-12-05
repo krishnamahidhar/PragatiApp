@@ -16,6 +16,8 @@ import com.dharanaditya.pragatiapp.DetailsActivity;
 import com.dharanaditya.pragatiapp.Model.Notification;
 import com.dharanaditya.pragatiapp.R;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -31,22 +33,29 @@ public class NotificationFragment extends Fragment {
     //UI
     RecyclerView recyclerView;
     FirebaseRecyclerAdapter<Notification, NotificationViewHolder> recyclerAdapter;
-
+    AdView adView;
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
 //        addData();
+        //        All the Staff & Students are informed that college remains closed on 28-11-2016 due to "Bundh".
+//
+//                I Yr I Sem Regular Examination scheduled on 28-11-2016 is postponed. Revised date will be intimated later.
+//        Remaining exams will be conducted as per the Timetable issued earlier.
+//                Principal, PEC
     }
 
     private void addData() {
         for (int i = 0; i < 5; i++) {
-            reference.push().setValue(new Notification("ECE","1-1","Winter Vaccations","Winter Vaccations 5-12-16 to 15-12-16","HOD ECE",null));
-            reference.push().setValue(new Notification("CSE","4-1","Projects Last Data","Last date to submit project is 20-12-16","HOD CSE",null));
-
+            reference
+                    .push()
+                    .setValue(new Notification(""
+                            ,""
+                            ,"Holiday","All the Staff & Students are informed that college remains closed on 28-11-2016 due to Bundh"
+                            ,"Principal, PEC",""));
         }
     }
-
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -55,20 +64,23 @@ public class NotificationFragment extends Fragment {
 
     }
 
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         final View v = inflater.inflate(R.layout.fragment_notification, container, false);
+
+        adView = (AdView) v.findViewById(R.id.frag_notif_adView);
+
         recyclerView = (RecyclerView) v.findViewById(R.id.notificationRCV);
 
         recyclerAdapter =
                 new FirebaseRecyclerAdapter<Notification, NotificationViewHolder>(Notification.class, R.layout.notif_item, NotificationViewHolder.class, reference) {
                     @Override
                     protected void populateViewHolder(NotificationViewHolder viewHolder, Notification model, final int position) {
-                        viewHolder.bindData(model.getBranch(),model.getSem(),model.getTimestamp(),model.getHead(),model,position);
+                        viewHolder.bindData(model.getBranch(), model.getSem(), model.getTimestamp(), model.getHead(), model, position);
                     }
                 };
+
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(recyclerAdapter);
 
@@ -79,6 +91,8 @@ public class NotificationFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
+        AdRequest adRequest = new AdRequest.Builder().build();
+        adView.loadAd(adRequest);
     }
 
     @Override
@@ -87,7 +101,7 @@ public class NotificationFragment extends Fragment {
     }
 
     public static class NotificationViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        TextView branch,sem,date,title;
+        TextView branch, sem, date, title;
         Notification model;
         int pos;
 
@@ -100,7 +114,7 @@ public class NotificationFragment extends Fragment {
             itemView.setOnClickListener(this);
         }
 
-        public void bindData(String branch,String sem,String date,String head,Notification model,int pos) {
+        public void bindData(String branch, String sem, String date, String head, Notification model, int pos) {
             this.date.setText(date);
             this.branch.setText(branch);
             this.sem.setText(sem);
@@ -112,8 +126,9 @@ public class NotificationFragment extends Fragment {
         @Override
         public void onClick(View view) {
 //            Log.d(MainActivity.TAG,pos+"");
+
             Intent i = new Intent(itemView.getContext(), DetailsActivity.class);
-            i.putExtra("title","Notification");
+            i.putExtra("title", "Notification");
             i.putExtra("parcel", Parcels.wrap(model));
             itemView.getContext().startActivity(i);
         }

@@ -16,6 +16,8 @@ import com.dharanaditya.pragatiapp.DetailsActivity;
 import com.dharanaditya.pragatiapp.Model.Examination;
 import com.dharanaditya.pragatiapp.R;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -26,6 +28,10 @@ public class ExaminationFragment extends Fragment {
     private FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
     private DatabaseReference reference = firebaseDatabase.getReference("examination");
 
+    RecyclerView recyclerView;
+    FirebaseRecyclerAdapter<Examination, ExaminationViewHolder> recyclerAdapter;
+    AdView adView;
+
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -34,8 +40,13 @@ public class ExaminationFragment extends Fragment {
 
     private void addData() {
         for (int i = 0; i < 5; i++) {
-            reference.push().setValue(new Examination("ECE","2-2","Tech Summit","Tech Summit 2016 is being conducted in seminar hall 1","Principal PEC",""));
-            reference.push().setValue(new Examination("CSE","2-1","Classes Suspender","Classes are suspended on 5-12-16","HOD CSE",""));
+            reference
+                    .push()
+                    .setValue(new Examination("ECE"
+                    , "1-4"
+                    , "Examination postponed",
+                    "I Yr I Sem Regular Examination scheduled on 28-11-2016 is postponed. Revised date will be intimated later. Remaining exams will be conducted as per the Timetable issued earlier."
+                    , "Principal, PEC", ""));
         }
     }
 
@@ -49,22 +60,29 @@ public class ExaminationFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         final View v = inflater.inflate(R.layout.fragment_examination, container, false);
-        RecyclerView recyclerView = (RecyclerView) v.findViewById(R.id.examinationRCV);
-        FirebaseRecyclerAdapter<Examination, ExaminationViewHolder> recyclerAdapter =
+
+        adView = (AdView) v.findViewById(R.id.frag_exam_adView);
+
+        recyclerView = (RecyclerView) v.findViewById(R.id.examinationRCV);
+
+        recyclerAdapter =
                 new FirebaseRecyclerAdapter<Examination, ExaminationViewHolder>(Examination.class, R.layout.exam_item, ExaminationViewHolder.class, reference) {
                     @Override
                     protected void populateViewHolder(ExaminationViewHolder viewHolder, Examination model, int position) {
-                        viewHolder.bindDate(model.getBranch(),model.getSem(),model.getTimestamp(),model.getHead(),model,position);
+                        viewHolder.bindDate(model.getBranch(), model.getSem(), model.getTimestamp(), model.getHead(), model, position);
                     }
                 };
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(recyclerAdapter);
+
         return v;
     }
 
     @Override
     public void onStart() {
         super.onStart();
+        AdRequest adRequest = new AdRequest.Builder().build();
+        adView.loadAd(adRequest);
     }
 
     public static class ExaminationViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
@@ -94,7 +112,7 @@ public class ExaminationFragment extends Fragment {
         public void onClick(View view) {
 //            Log.d(MainActivity.TAG,pos+"");
             Intent i = new Intent(itemView.getContext(), DetailsActivity.class);
-            i.putExtra("title","Examination");
+            i.putExtra("title", "Examination");
             i.putExtra("parcel", Parcels.wrap(model));
             itemView.getContext().startActivity(i);
         }

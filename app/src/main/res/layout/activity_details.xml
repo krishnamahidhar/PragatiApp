@@ -1,40 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
     android:id="@+id/activity_details"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:padding="10dp"
     tools:context="com.dharanaditya.pragatiapp.DetailsActivity">
-
 
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp">
         <TextView
             android:id="@+id/details_branch"
-            android:hint="Branch"
             android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:textSize="22sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold"
+            android:layout_gravity="center"/>
+            <!--android:hint="Branch"-->
         <TextView
             android:id="@+id/details_sem"
-            android:hint="Sem"
             android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:textSize="22sp"
-            android:textStyle="italic"/>
+            android:textStyle="italic"
+            android:layout_gravity="center"/>
+            <!--android:hint="Sem"-->
         <TextView
             android:id="@+id/details_date"
             android:hint="Date"
             android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:textSize="16sp"/>
+            android:textSize="16sp"
+            android:layout_gravity="center"/>
     </LinearLayout>
     <TextView
         android:id="@+id/details_head"
@@ -43,7 +49,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="22sp"
-        android:textStyle="bold"/>
+        android:textStyle="bold"
+        android:layout_marginBottom="10dp"/>
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -52,26 +60,37 @@
         android:hint="Body"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="18sp"/>
+        android:textSize="18sp"
+        android:textAlignment="textStart"/>
     </ScrollView>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="10dp" />
+
     <TextView
         android:id="@+id/details_author"
         android:hint="Author"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="16sp"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="10dp" />
+        android:textSize="16sp"
+        android:gravity="left"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"/>
+
     <TextView
         android:id="@+id/details_links"
-        android:hint="Reference Links"
         android:linksClickable="true"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:gravity="left"/>
+        <!--android:hint="Reference Links"-->
+
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/deatils_adView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center"
+        android:layout_marginTop="30dp"
+        ads:adSize="BANNER"
+        ads:adUnitId="@string/banner_ad_unit_id"
+    />
 
 </LinearLayout>
 
