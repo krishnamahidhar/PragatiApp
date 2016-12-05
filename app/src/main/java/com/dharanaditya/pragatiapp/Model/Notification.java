@@ -1,5 +1,7 @@
 package com.dharanaditya.pragatiapp.Model;
 
+import org.parceler.Parcel;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -9,7 +11,7 @@ import java.util.Date;
 
 // Todo : Review before final release
 
-
+@Parcel
 public class Notification {
     private String branch, sem, head, body, timestamp, author, link;
 

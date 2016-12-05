@@ -19,6 +19,8 @@ import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import org.parceler.Parcels;
+
 public class ExaminationFragment extends Fragment {
 
     private FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
@@ -92,7 +94,8 @@ public class ExaminationFragment extends Fragment {
         public void onClick(View view) {
 //            Log.d(MainActivity.TAG,pos+"");
             Intent i = new Intent(itemView.getContext(), DetailsActivity.class);
-            i.putExtra("pos",pos);
+            i.putExtra("title","Examination");
+            i.putExtra("parcel", Parcels.wrap(model));
             itemView.getContext().startActivity(i);
         }
     }

@@ -1,15 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_details"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.dharanaditya.pragatiapp.DetailsActivity">
 
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/details_branch"
+            android:hint="Branch"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textSize="22sp"
+            android:textStyle="bold"/>
+        <TextView
+            android:id="@+id/details_sem"
+            android:hint="Sem"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textSize="22sp"
+            android:textStyle="italic"/>
+        <TextView
+            android:id="@+id/details_date"
+            android:hint="Date"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"/>
+    </LinearLayout>
     <TextView
-        android:id="@+id/details_text"
-        android:text="Hello Details"
+        android:id="@+id/details_head"
+        android:gravity="center"
+        android:hint="Head"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="22sp"
+        android:textStyle="bold"/>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    <TextView
+        android:id="@+id/details_body"
+        android:hint="Body"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"/>
+    </ScrollView>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="10dp" />
+    <TextView
+        android:id="@+id/details_author"
+        android:hint="Author"
         android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="10dp" />
+    <TextView
+        android:id="@+id/details_links"
+        android:hint="Reference Links"
+        android:linksClickable="true"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-</RelativeLayout>
+</LinearLayout>
+

@@ -5,7 +5,7 @@ package com.dharanaditya.pragatiapp.Model;
  */
 
 // Todo : Review before final release
-
+@org.parceler.Parcel
 public class Examination extends Notification{
     public Examination() {
 
@@ -28,4 +28,5 @@ public class Examination extends Notification{
                 ", read=" + read +
                 '}';
     }
+
 }
