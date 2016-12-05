@@ -1,7 +1,9 @@
 <resources>
-    <string name="app_name">Pragati App</string>
+    <string name="app_name">Pragati Connect</string>
     <string name="college_name">Pragati Engineering College</string>
     <string name="strip_palace_holder_1">Feeds</string>
     <string name="strip_palace_holder_2">Exams</string>
+    <string name="banner_ad_unit_id">ca-app-pub-7663922808072797/3219067862</string>
+
 
 </resources>

@@ -9,7 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import com.dharanaditya.pragatiapp.Adapter.FragmentPagerViewAdapter;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity{
     public static FirebaseDatabase firebaseDatabase;
 
     public static final String TAG = "DEBUG_TAG";

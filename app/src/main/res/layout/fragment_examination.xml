@@ -1,5 +1,7 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.dharanaditya.pragatiapp.ui.ExaminationFragment">
@@ -9,6 +11,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/rcvBG"/>
+
+     <com.google.android.gms.ads.AdView
+         android:id="@+id/frag_exam_adView"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_gravity="bottom|center"
+         ads:adSize="BANNER"
+         ads:adUnitId="@string/banner_ad_unit_id"
+         />
     <!--<ListView-->
         <!--android:id="@+id/examinationListView"-->
         <!--android:layout_width="match_parent"-->

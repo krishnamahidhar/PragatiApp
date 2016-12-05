@@ -1,5 +1,7 @@
 package com.dharanaditya.pragatiapp.Model;
 
+import org.parceler.Parcel;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -9,56 +11,26 @@ import java.util.Date;
 
 // Todo : Review before final release
 
-
+@Parcel
 public class Notification {
-    private String title;
-    private String messege;
-    private String author;
-    private String timeStamp;
-    private String branch;
-    private String sem;
+    private String branch, sem, head, body, timestamp, author, link;
+
     boolean read;
 
+
     public Notification() {
+
     }
 
-    public Notification(String title, String messege, String author) {
-        this.title = title;
-        this.messege = messege;
-        this.author = author;
-        read = false;
-        timeStamp = new SimpleDateFormat("MM/dd/yyyy HH:mm").format(new Date());
-    }
-
-    public Notification(String branch, String title) {
+    public Notification(String branch, String sem, String head, String body, String author, String link) {
         this.branch = branch;
-        this.title = title;
-        timeStamp = new SimpleDateFormat("MM/dd/yyyy HH:mm").format(new Date());
-
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getMessege() {
-        return messege;
-    }
-
-    public void setMessege(String messege) {
-        this.messege = messege;
-    }
-
-    public String getAuthor() {
-        return author;
-    }
-
-    public void setAuthor(String author) {
+        this.sem = sem;
+        this.head = head;
+        this.body = body;
         this.author = author;
+        this.link = link;
+        this.timestamp = new SimpleDateFormat("dd.MM.yy 'at' HH:mm").format(new Date());
+        this.read = false;
     }
 
     public String getBranch() {
@@ -77,12 +49,44 @@ public class Notification {
         this.sem = sem;
     }
 
-    public String getTimeStamp() {
-        return timeStamp;
+    public String getHead() {
+        return head;
     }
 
-    public void setTimeStamp(String timeStamp) {
-        this.timeStamp = timeStamp;
+    public void setHead(String head) {
+        this.head = head;
+    }
+
+    public String getBody() {
+        return body;
+    }
+
+    public void setBody(String body) {
+        this.body = body;
+    }
+
+    public String getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(String timestamp) {
+        this.timestamp = timestamp;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public String getLink() {
+        return link;
+    }
+
+    public void setLink(String link) {
+        this.link = link;
     }
 
     public boolean isRead() {
@@ -96,10 +100,13 @@ public class Notification {
     @Override
     public String toString() {
         return "Notification{" +
-                "title='" + title + '\'' +
-                ", messege='" + messege + '\'' +
+                "branch='" + branch + '\'' +
+                ", sem='" + sem + '\'' +
+                ", head='" + head + '\'' +
+                ", body='" + body + '\'' +
+                ", timestamp='" + timestamp + '\'' +
                 ", author='" + author + '\'' +
-                ", timeStamp=" + timeStamp +
+                ", link='" + link + '\'' +
                 ", read=" + read +
                 '}';
     }
